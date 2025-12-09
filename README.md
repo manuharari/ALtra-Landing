@@ -20,7 +20,7 @@ Para editar y probar el sitio en tu computadora antes de subirlo.
    npm install
    npm install lucide-react @google/genai
    ```
-   *Copia tus archivos `.tsx` y `.ts` dentro de la carpeta `src/`.*
+   *Copia tus archivos `.tsx` y `.ts` dentro de la carpeta `src/`, y los archivos de configuración (`vite.config.ts`, `netlify.toml`) en la raíz.*
 
 3. **Ejecutar servidor de desarrollo**:
    ```bash
@@ -30,33 +30,33 @@ Para editar y probar el sitio en tu computadora antes de subirlo.
 
 ---
 
-## 🌐 2. Despliegue en Internet (Gratis)
+## 🌐 2. Despliegue en Internet (Solución Pantalla Blanca)
 
-La mejor opción para alojar este sitio de forma gratuita, rápida y manteniendo el diseño es **Netlify** o **Vercel**.
+Para evitar la "Pantalla Blanca", sigue estos pasos en **Netlify**:
 
-### Opción A: Netlify Drop (La más fácil - Arrastrar y Soltar)
-Esta opción no requiere usar GitHub ni comandos complejos.
+### A. Subir a GitHub
+1. Sube todo tu código (incluyendo `vite.config.ts` y `netlify.toml`) a un repositorio de GitHub.
 
-1. En tu terminal local (dentro de la carpeta del proyecto), crea la versión final:
-   ```bash
-   npm run build
-   ```
-   *Esto creará una carpeta llamada `dist`.*
-2. Ve a [app.netlify.com/drop](https://app.netlify.com/drop).
-3. Arrastra la carpeta `dist` completa al recuadro en el navegador.
-4. **¡Listo!** Netlify te dará un enlace (ej: `kinky-flooring-123.netlify.app`).
+### B. Conectar a Netlify
+1. Ve a [Netlify](https://www.netlify.com/) y crea una cuenta.
+2. "Import from Git" > Elige tu repositorio.
+3. Netlify detectará automáticamente la configuración gracias al archivo `netlify.toml`.
+   - **Build Command:** `npm run build`
+   - **Publish Directory:** `dist`
 
-### Opción B: Vercel + GitHub (Recomendada para profesionales)
-Ideal si quieres actualizaciones automáticas.
+### C. Configurar API Key (CRUCIAL)
+Si no haces esto, la página se verá en blanco o el chat fallará.
 
-1. Sube tu código a un repositorio de **GitHub**.
-2. Ve a [Vercel.com](https://vercel.com) y crea una cuenta.
-3. Haz clic en "Add New Project" e importa tu repositorio de GitHub.
-4. Vercel detectará que es React/Vite. Dale a "Deploy".
+1. En el panel de Netlify de tu sitio, ve a **Site configuration** > **Environment variables**.
+2. Haz clic en **Add a variable**.
+3. **Key**: `API_KEY`
+4. **Value**: (Pega tu clave de Google Gemini aquí).
+5. Haz clic en **Create Variable**.
+6. Ve a la pestaña **Deploys** y haz clic en **Trigger deploy** > **Deploy site** para reconstruir el sitio con la clave.
 
 ---
 
-## 🛠 3. Flujo de Trabajo del Admin (IMPORTANTE)
+## 🛠 3. Flujo de Trabajo del Admin
 
 Como este sitio **no usa base de datos** (para mantenerlo gratis y seguro), los cambios que hagas en el Panel de Admin se guardan en el navegador (`localStorage`).
 
@@ -72,31 +72,9 @@ Sigue este ciclo de trabajo "Static Site":
    - Ve a tu código fuente, archivo `src/constants.ts`.
    - Reemplaza el objeto `INITIAL_CONTENT` con lo que copiaste.
 4. **Re-desplegar**:
-   - Si usas **Netlify Drop**: Ejecuta `npm run build` de nuevo y arrastra la carpeta.
-   - Si usas **GitHub**: Haz un `git push` con el cambio en `constants.ts`.
+   - Haz un `git push` con el cambio en `constants.ts`. Netlify actualizará el sitio automáticamente.
 
 *Este método te permite tener un CMS visual completo sin pagar servidores ni bases de datos.*
-
----
-
-## 🔑 4. Configuración de API Keys (Chatbot)
-
-Para que el Chatbot "Altra AI" funcione en internet:
-
-1. Obtén tu API Key en [Google AI Studio](https://aistudio.google.com/).
-2. En tu servicio de hosting (Netlify/Vercel), ve a **Settings > Environment Variables**.
-3. Crea una variable llamada `VITE_API_KEY` (o como la tengas configurada en tu código) y pega tu clave.
-4. **Seguridad**: En la consola de Google Cloud, restringe tu API Key para que solo acepte peticiones desde tu dominio (ej: `https://www.altrapisos.com`).
-
----
-
-## 🌍 5. Conectar tu Dominio (.com)
-
-1. Compra tu dominio (ej: `altrapisos.com`) en **Namecheap** o **GoDaddy**.
-2. En Netlify/Vercel, ve a "Domain Management".
-3. Escribe tu dominio.
-4. La plataforma te dará unos "DNS Nameservers" (ej: `dns1.p01.nsone.net`).
-5. Ve a donde compraste el dominio y cambia los DNS por los que te dio Netlify/Vercel.
 
 ---
 

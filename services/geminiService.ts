@@ -1,9 +1,22 @@
 import { GoogleGenAI } from "@google/genai";
 import { INITIAL_CONTENT } from "../constants";
 
-// Initialize the client. 
-// Note: process.env.API_KEY is assumed to be available in the environment.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Safely access the key to prevent "process is not defined" crashes if config is missing
+const getApiKey = () => {
+  try {
+    // @ts-ignore
+    return process?.env?.API_KEY || '';
+  } catch (e) {
+    console.warn("API Key not configured in environment variables.");
+    return '';
+  }
+};
+
+const apiKey = getApiKey();
+
+// Initialize the client only if key exists, otherwise we handle it gracefully in the function
+// Note: process.env.API_KEY is assumed to be available via Vite define config.
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 const SYSTEM_INSTRUCTION = `
 Eres "Altra AI", el asistente virtual experto de Altra Pisos, una empresa mexicana líder en soluciones de pisos premium.
@@ -21,10 +34,12 @@ Reglas:
 `;
 
 export const sendMessageToGemini = async (userMessage: string, history: {role: string, parts: string[]}[] = []): Promise<string> => {
+  if (!ai) {
+    return "El sistema de chat no está configurado correctamente (Falta API Key). Por favor contáctanos por teléfono.";
+  }
+
   try {
     // We use a stateless approach for simplicity in this demo, but pass context via system instruction
-    // In a full implementation, we would maintain a proper chat session object.
-    
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: [
