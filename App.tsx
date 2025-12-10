@@ -7,7 +7,7 @@ import { About } from './components/About';
 import { Gallery } from './components/Gallery';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { ChatBot } from './components/ChatBot';
+import { WhatsAppButton } from './components/WhatsAppButton';
 import { AdminPanel } from './components/AdminPanel';
 import { AdminLoginModal } from './components/AdminLoginModal';
 import { View } from './types';
@@ -121,7 +121,7 @@ function AppContent() {
         {renderView()}
       </main>
 
-      {isPublicView && <ChatBot />}
+      {isPublicView && <WhatsAppButton />}
       {isPublicView && (
         <Footer onNav={handleViewChange} onAdminClick={handleAdminClick} />
       )}

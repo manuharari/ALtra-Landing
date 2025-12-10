@@ -323,7 +323,10 @@ export const AdminPanel: React.FC<{ onExit: () => void }> = ({ onExit }) => {
                     <Group title="Información de Contacto">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <Input label="Email de Ventas" value={content.general.contactEmail} onChange={(v: string) => updateField('general.contactEmail', v)} />
-                            <Input label="Teléfono" value={content.general.contactPhone} onChange={(v: string) => updateField('general.contactPhone', v)} />
+                            <Input label="Teléfono (Llamadas)" value={content.general.contactPhone} onChange={(v: string) => updateField('general.contactPhone', v)} />
+                        </div>
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                             <Input label="WhatsApp (Sin espacios)" value={content.general.whatsapp} onChange={(v: string) => updateField('general.whatsapp', v)} />
                         </div>
                         <TextArea label="Dirección Física" value={content.general.contactAddress} onChange={(v: string) => updateField('general.contactAddress', v)} />
                     </Group>

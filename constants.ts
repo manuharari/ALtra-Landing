@@ -7,6 +7,11 @@ export const DEFAULT_ADMIN_CREDENTIALS = {
   role: 'master'
 };
 
+// =========================================================================================
+// PASTE YOUR JSON EXPORT HERE TO UPDATE THE SITE
+// REPLACE THE ENTIRE OBJECT BELOW WITH THE CONTENT FROM "altra-pisos-config.json"
+// =========================================================================================
+
 export const INITIAL_CONTENT: SiteContent = {
   theme: {
     primaryColor: '#5f3d30',
@@ -19,6 +24,7 @@ export const INITIAL_CONTENT: SiteContent = {
     tagline: "Soluciones Premium en Pisos",
     contactEmail: "ventas@altrapisos.com.mx",
     contactPhone: "+52 (55) 1234 5678",
+    whatsapp: "+525583464031",
     contactAddress: "Av. Paseo de la Reforma, CDMX, México, 06500"
   },
   legal: {

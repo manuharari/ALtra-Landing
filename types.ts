@@ -72,6 +72,7 @@ export interface SiteContent {
     contactEmail: string;
     contactPhone: string;
     contactAddress: string;
+    whatsapp: string; // New field for WhatsApp number
   };
   legal: {
     privacyPolicy: string;
