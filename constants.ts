@@ -131,6 +131,8 @@ Bienvenido a Altra Pisos. Al utilizar nuestro sitio web, usted acepta los siguie
     { src: "https://images.unsplash.com/photo-1665484507044-6a0d2685764d?q=80&w=800", label: "Transporte Público", size: "small" }
   ],
   about: {
+    heroImage: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2531&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1000&auto=format&fit=crop",
     history: [
       "Fundada con la visión de elevar los estándares de infraestructura hospitalaria y comercial en México, Altra Pisos se ha consolidado como el referente en recubrimientos especializados.",
       "Entendemos que un quirófano no puede fallar, que un set de televisión necesita silencio visual y acústico, y que el transporte público requiere una durabilidad a prueba de todo. Nuestra alianza con Relleflooring nos permite ofrecer tecnología de punta."

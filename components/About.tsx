@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Award, Clock, Users, ShieldCheck } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
@@ -15,7 +16,7 @@ export const About: React.FC = () => {
       {/* Intro */}
       <div className="relative py-20 bg-stone-900 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2531&auto=format&fit=crop" alt="Architecture" className="w-full h-full object-cover" />
+            <img src={content.about.heroImage} alt="Architecture" className="w-full h-full object-cover" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">Nuestra Esencia</h2>
@@ -52,7 +53,7 @@ export const About: React.FC = () => {
           <div className="relative">
              <div className="absolute -inset-4 border-2 border-brand-200 z-0 rounded-sm"></div>
              <img 
-              src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1000&auto=format&fit=crop" 
+              src={content.about.image} 
               alt="Installation worker" 
               className="relative z-10 rounded-sm shadow-xl w-full h-[400px] object-cover filter sepia-[.15]"
              />

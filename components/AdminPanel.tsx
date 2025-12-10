@@ -465,8 +465,6 @@ export const AdminPanel: React.FC<{ onExit: () => void }> = ({ onExit }) => {
                 </div>
                 )}
 
-                {/* Other tabs remain similar but omitted for brevity in this specific update block, assuming they persist */}
-                {/* ... (Testimonials, Gallery, About, Users tabs remain identical to previous implementation) ... */}
                 {activeTab === 'testimonials' && (
                   <div className="space-y-8 animate-fade-in">
                     <div className="flex justify-between items-center">
@@ -527,6 +525,20 @@ export const AdminPanel: React.FC<{ onExit: () => void }> = ({ onExit }) => {
 
                 {activeTab === 'about' && (
                 <div className="space-y-6 animate-fade-in">
+                    <Group title="Imágenes de Sección">
+                         <ImageField 
+                            label="Imagen Principal (Junto al texto)" 
+                            value={content.about.image} 
+                            onChange={(v: string) => updateField('about.image', v)} 
+                         />
+                         <div className="mt-4">
+                             <ImageField 
+                                label="Imagen de Fondo (Banner Superior)" 
+                                value={content.about.heroImage} 
+                                onChange={(v: string) => updateField('about.heroImage', v)} 
+                             />
+                         </div>
+                    </Group>
                     <Group title="Historia">
                         <div className="flex justify-end mb-2"><button onClick={addHistory} className="text-xs bg-stone-200 hover:bg-stone-300 text-stone-700 px-3 py-1 rounded flex items-center gap-1 font-bold uppercase tracking-wider"><Plus size={12} /> Párrafo</button></div>
                         {content.about.history.map((para, idx) => (

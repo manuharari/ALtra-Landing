@@ -86,6 +86,8 @@ export interface SiteContent {
   testimonials: Testimonial[];
   gallery: { src: string; label: string; size: string }[];
   about: {
+    heroImage: string;
+    image: string;
     history: string[];
     stats: { label: string; value: string; }[];
     steps: { title: string; desc: string; }[];
